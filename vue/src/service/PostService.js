@@ -17,6 +17,26 @@ export default class PostService {
     }
 
     // todo Create Post
+    static addPost(value) {
+        return new Promise(async (resolve,reject) => {
+            await axios.post(url,{
+                text: value
+            }).then(() => {
+                resolve(true);
+            }).catch(() => {
+                reject(false);
+            })
+        })
+    }
 
     // todo Delete Post
+    static deletePost(id) {
+        return new Promise(async (resolve,reject) => { 
+            await axios.delete(url + '/' + id).then((res) => {
+                resolve(true);
+            }).catch(err => {
+                reject(false)
+            })
+        })
+    }
 }
